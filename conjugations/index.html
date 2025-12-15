@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Latin Word Endings Practice</title>
+	</head>
+	<body>
+		<h1>Conjugation Practice</h1>
+		<p id="score"></p>
+		<h3>Singular</h3>
+		<table>
+			<tr>
+				<th>Person</th>
+				<th>1st</th>
+				<th>2nd</th>
+				<th>3rd</th>
+				<th>3rd-io</th>
+				<th>4th</th>
+			</tr>
+			<tr>
+				<th>1st</th>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+			</tr>          
+			<tr>           
+				<th>2nd</th>
+				<td><input placeholder="type..."</td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+			</tr>          
+			<tr>           
+				<th>3rd</th>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+			</tr>
+		</table>
+
+		<h3>Plural</h3>
+		<table>
+			<tr>
+				<th>Person</th>
+				<th>1st</th>
+				<th>2nd</th>
+				<th>3rd</th>
+				<th>3rd-io</th>
+				<th>4th</th>
+			</tr>
+			<tr>
+				<th>1st</th>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+			</tr>          
+			<tr>           
+				<th>2nd</th>
+				<td><input placeholder="type..."</td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+			</tr>          
+			<tr>           
+				<th>3rd</th>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+				<td><input placeholder="type..."></td>
+			</tr>
+		</table>
+
+		<br />
+
+		<button id="check" onclick="checkAnswers()">Check Answers</button>
+		<button id="reset" onclick="reset()">Reset</button>
+
+		<script>
+			const answers = [
+				// 1st person singular
+				"-ō",   // 1st conjugation
+				"-eō",  // 2nd conjugation
+				"-ō",   // 3rd conjugation
+				"-iō",  // 3rd-io conjugation
+				"-iō",  // 4th conjugation
+
+				// 2nd person singular
+				"-ās",
+				"-ēs",
+				"-is",
+				"-is",
+				"-īs",
+
+				// 3rd person singular
+				"-at",
+				"-et",
+				"-it",
+				"-it",
+				"-it",
+
+				// 1st person plural
+				"-āmus",
+				"-ēmus",
+				"-imus",
+				"-imus",
+				"-īmus",
+
+				// 2nd person plural
+				"-ātis",
+				"-ētis",
+				"-itis",
+				"-itis",
+				"-ītis",
+
+				// 3rd person plural
+				"-ant",
+				"-ent",
+				"-unt",
+				"-iunt",
+				"-iunt"
+			];
+
+			const scoreReadout = document.getElementById("score");
+		
+			function checkAnswers() {
+				idx = 0;
+				totalCorrect = 0;
+				document.querySelectorAll("td").forEach((cell) => {
+					let input = cell.querySelector("input");
+					if (input.value == answers[idx]) {
+						cell.style.background = `#16df16`;
+						totalCorrect++;
+					} else {
+						cell.style.background = `#df1616`;
+					}
+					scoreReadout.innerText = `${Math.floor((totalCorrect/30)*100)}%`;
+					idx++;
+				});
+			}
+
+			function reset() {
+				document.querySelectorAll("td").forEach((cell) => {
+					let input = cell.querySelector("input");
+					cell.style.background = "white";
+
+					input.value = "";
+					scoreReadout.innerText = "";
+				});
+			}
+
+		</script>
+
+		<style>
+			body {
+				font-family: sans-serif;
+				width: 100vw;
+				height: 100vh;
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				padding: 0px;
+				margin: 0px;
+			}
+
+			table {
+				border-collapse: collapse;
+			}
+
+			table, th{
+				border: 1px solid black;
+				padding: 5px 10px 5px 10px;
+			}
+
+			td {
+				width: 65px;
+				height: 20px;
+				border: 1px solid black;
+				transition-duration: 150ms;
+			}
+
+			input {
+				width: 45px;
+				height: 20px;
+				margin: 0px;
+				padding: 0px 0px 0px 5px;
+				border: none;
+				background: none;
+			}
+
+			input:focus {
+				outline: none;
+			}
+
+			@media print {
+				input { display: none; }
+				button { display: none; }
+			}
+
+			button {
+				border: none;
+				border-radius: 3px;
+				margin: 5px;
+				padding: 5px;
+				transition-duration: 150ms;
+			}
+
+			button:hover {
+				background: #afafaf;
+				cursor: pointer;
+			}
+
+			#reset {
+				background: #ad0f0f;
+			}
+
+			#reset:hover {
+				background: #dd0f0f;
+			}
+		</style>
+	</body>
+</html>
