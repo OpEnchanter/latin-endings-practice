@@ -1,2 +1,2 @@
-# latin-endings-practice
-A browser app for memorizing Latin word endings.
+# Latin Endings Practice App
+A website for practicing latin endings!
