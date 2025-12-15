@@ -152,6 +152,7 @@
 					cell.style.background = "white";
 
 					input.value = "";
+					scoreReadout.innerText = "";
 				});
 			}
 
@@ -184,6 +185,7 @@
 				width: 65px;
 				height: 20px;
 				border: 1px solid black;
+				transition-duration: 150ms;
 			}
 
 			input {
@@ -202,6 +204,27 @@
 			@media print {
 				input { display: none; }
 				button { display: none; }
+			}
+
+			button {
+				border: none;
+				border-radius: 3px;
+				margin: 5px;
+				padding: 5px;
+				transition-duration: 150ms;
+			}
+
+			button:hover {
+				background: #afafaf;
+				cursor: pointer;
+			}
+
+			#reset {
+				background: #ad0f0f;
+			}
+
+			#reset:hover {
+				background: #dd0f0f;
 			}
 		</style>
 	</body>
