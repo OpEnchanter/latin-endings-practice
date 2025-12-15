@@ -135,7 +135,7 @@
 				totalCorrect = 0;
 				document.querySelectorAll("td").forEach((cell) => {
 					let input = cell.querySelector("input");
-					if (input.value == answers[idx]) {
+					if (input.value == answers[idx] || input.value == answers[idx].replace("-", "")) {
 						cell.style.background = `#16df16`;
 						totalCorrect++;
 					} else {
