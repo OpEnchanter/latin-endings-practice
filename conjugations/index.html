@@ -81,6 +81,7 @@
 		<br />
 
 		<button id="check" onclick="checkAnswers()">Check Answers</button>
+		<button id="show" onclick="showAnswers()">Show Answers</button>
 		<button id="reset" onclick="reset()">Reset</button>
 
 		<script>
@@ -136,10 +137,10 @@
 				document.querySelectorAll("td").forEach((cell) => {
 					let input = cell.querySelector("input");
 					if (input.value == answers[idx] || input.value == answers[idx].replace("-", "")) {
-						cell.style.background = `#16df16`;
+						cell.style.background = `#dfefdf`;
 						totalCorrect++;
 					} else {
-						cell.style.background = `#df1616`;
+						cell.style.background = `#efdfdf`;
 					}
 					scoreReadout.innerText = `${Math.floor((totalCorrect/30)*100)}%`;
 					idx++;
@@ -153,6 +154,16 @@
 
 					input.value = "";
 					scoreReadout.innerText = "";
+				});
+			}
+
+			function showAnswers() {
+				idx = 0;
+				document.querySelectorAll("td").forEach((cell) => {
+					cell.style.background = "#dfdfef";
+					let input = cell.querySelector("input");
+					input.value = answers[idx];
+					idx++;
 				});
 			}
 
