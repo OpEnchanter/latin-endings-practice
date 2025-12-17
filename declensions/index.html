@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Latin Word Endings Practice</title>
+		<link rel="stylesheet" href="/styles/index.css">
 	</head>
 	<body>
 		<h1>Declension Practice</h1>
@@ -82,10 +83,11 @@
 
 		<br />
 
-		<button id="check" onclick="checkAnswers()">Check Answers</button>
-		<button id="show" onclick="showAnswers()">Show Answers</button>
+		<button id="check" onclick="checkAnswers(answers)">Check Answers</button>
+		<button id="show" onclick="showAnswers(answers)">Show Answers</button>
 		<button id="reset" onclick="reset()">Reset</button>
-
+	
+		<script src="index.js"></script>
 		<script>
 			const answers = [
 				// Nominative Singular
@@ -133,117 +135,7 @@
 				"-ae",
 				"-ō",
 				"-is"
-
 			];
-
-			const scoreReadout = document.getElementById("score");
-		
-			function checkAnswers() {
-				idx = 0;
-				totalCorrect = 0;
-				document.querySelectorAll("td").forEach((cell) => {
-					let input = cell.querySelector("input");
-					if (input.value == answers[idx] || input.value == answers[idx].replace("-", "")) {
-						cell.style.background = `#dfefdf`;
-						totalCorrect++;
-					} else {
-						cell.style.background = `#efdfdf`;
-					}
-					scoreReadout.innerText = `${Math.floor((totalCorrect/27)*100)}%`;
-					idx++;
-				});
-			}
-
-			function reset() {
-				document.querySelectorAll("td").forEach((cell) => {
-					let input = cell.querySelector("input");
-					cell.style.background = "white";
-
-					input.value = "";
-					scoreReadout.innerText = "";
-				});
-			}
-
-			function showAnswers() {
-				idx = 0;
-				document.querySelectorAll("td").forEach((cell) => {
-					cell.style.background = "#dfdfef";
-					let input = cell.querySelector("input");
-					input.value = answers[idx];
-					idx++;
-				});
-			}
-
 		</script>
-
-		<style>
-			body {
-				font-family: sans-serif;
-				width: 100vw;
-				height: 100vh;
-				position: absolute;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				flex-direction: column;
-				padding: 0px;
-				margin: 0px;
-			}
-
-			table {
-				border-collapse: collapse;
-			}
-
-			table, th{
-				border: 1px solid black;
-				padding: 5px 10px 5px 10px;
-			}
-
-			td {
-				width: 65px;
-				height: 20px;
-				border: 1px solid black;
-				transition-duration: 150ms;
-			}
-
-			input {
-				width: 45px;
-				height: 20px;
-				margin: 0px;
-				padding: 0px 0px 0px 5px;
-				border: none;
-				background: none;
-			}
-
-			input:focus {
-				outline: none;
-			}
-
-			@media print {
-				input { display: none; }
-				button { display: none; }
-			}
-
-			button {
-				border: none;
-				border-radius: 3px;
-				margin: 5px;
-				padding: 5px;
-				transition-duration: 150ms;
-			}
-
-			button:hover {
-				background: #afafaf;
-				cursor: pointer;
-			}
-
-			#reset {
-				background: #ad0f0f;
-			}
-
-			#reset:hover {
-				background: #dd0f0f;
-			}
-		</style>
 	</body>
 </html>
