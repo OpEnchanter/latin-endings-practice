@@ -1,4 +1,5 @@
 function checkAnswers(answers) {
+	const scoreReadout = document.getElementById("score");
 	idx = 0;
 	totalCorrect = 0;
 	document.querySelectorAll("td").forEach((cell) => {
