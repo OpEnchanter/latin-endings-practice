@@ -6,8 +6,10 @@ function checkAnswers(answers) {
 		let input = cell.querySelector("input");
 		if (input.value == answers[idx] || input.value == answers[idx].replace("-", "")) {
 			cell.style.background = `#dfefdf`;
+			cell.style.setProperty('--icon', 'url("/check.png")');
 			totalCorrect++;
 		} else {
+			cell.style.setProperty('--icon', 'url("/x.png")');
 			cell.style.background = `#efdfdf`;
 		}
 		scoreReadout.innerText = `${Math.floor((totalCorrect/30)*100)}%`;
@@ -18,6 +20,7 @@ function checkAnswers(answers) {
 function reset() {
 	const scoreReadout = document.getElementById("score");
 	document.querySelectorAll("td").forEach((cell) => {
+		cell.style.setProperty('--icon', 'none');
 		let input = cell.querySelector("input");
 		cell.style.background = "white";
 
@@ -29,6 +32,7 @@ function reset() {
 function showAnswers(answers) {
 	idx = 0;
 	document.querySelectorAll("td").forEach((cell) => {
+		cell.style.setProperty('--icon', 'none');
 		cell.style.background = "#dfdfef";
 		let input = cell.querySelector("input");
 		input.value = answers[idx];

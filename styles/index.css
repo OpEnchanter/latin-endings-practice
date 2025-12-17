@@ -21,10 +21,22 @@ table, th{
 }
 
 td {
+	--icon: none;
 	width: 65px;
 	height: 20px;
 	border: 1px solid black;
 	transition-duration: 150ms;
+	position: relative;
+}
+
+td::after {
+	content: '';
+	position: absolute;
+	background: var(--icon);
+	top: 1px; right: 1px;
+	background-size: contain;
+	width: 15px; aspect-ratio: 1;
+
 }
 
 input {
